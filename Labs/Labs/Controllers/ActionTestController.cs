@@ -4,13 +4,11 @@ namespace Labs.Controllers
 {
     public class ActionTestController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "HelloWorld";
-        }
-        public IActionResult ActionIndex()
-        {
-            return View("MyView");
+            int hour = DateTime.Now.Hour;
+            ViewBag.LoiChao = hour < 12 ? "Chao Buoi Sang" : "Chao buoi chieu";
+            return View();
         }
     }
 }
