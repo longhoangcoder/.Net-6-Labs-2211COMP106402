@@ -1,20 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Labs.Models.Student
+
 @{
-    ViewData["Title"] = "Đọc/Ghi file";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
 }
-<h2>Đọc/ghi file</h2>
-<form asp-action="Manage" asp-controller="Student" method="post">
-    <div>Mã sinh viên</div>
-    <input name="Id" value="@ViewBag.Id" />
-    <div>Họ và tên</div>
-    <input name="Name" value="@ViewBag.Name" />
-    <div>Điểm trung bình</div>
-    <input name="Marks" value="@ViewBag.Marks" />
-    <hr />
-    <input type="submit" value="Lưu" name="command" />
-    <input type="submit" value="Mở" name="command" />
-</form>
-<h4>@ViewBag.Message</h4>
+
+<h3>Quản lý Sinh viên</h3>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" value="@ViewBag.Id" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" value="@ViewBag.FullName"/>
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mark" class="control-label"></label>
+                <input asp-for="Mark" class="form-control" value="@ViewBag.Mark" />
+                <span asp-validation-for="Mark" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label" value="@ViewBag.Grade"></label>
+                <div class="text-danger">@Model?.Grade</div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu file Text"
+                       name="buttonLuu" class="btn btn-primary" />
+                <input type="submit" value="Lưu file JSON"
+                       name="buttonLuu" class="btn btn-primary" />
+                <a asp-action="ReadData" asp-route-type="TXT" class="btn btn-success">
+                    Đọc file Text
+                </a>
+                <a asp-action="ReadData" asp-route-type="JSON" class="btn btn-success">
+                    Đọc file Json
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
