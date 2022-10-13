@@ -39,7 +39,7 @@ namespace Lab02.Controllers
                 var jsonString = System.IO.File.ReadAllText(JsonFullPath);
                 studentModel = JsonSerializer.Deserialize<Student>(jsonString);
             }
-            if(type == "TXT")
+            else if(type == "TXT")
             {
                 String[] lines = System.IO.File.ReadAllLines(TxtFullPath);
                 ViewBag.Id = lines[0];
