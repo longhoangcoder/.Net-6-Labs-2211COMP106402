@@ -1,6 +1,7 @@
 ﻿@page
 @model RazorPagesDemoApp.Pages.Employees.ListModel
 @{
+
 }
 <h1 class="mb-3">List of Employees</h1>
 
@@ -11,6 +12,10 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Salary</th>
+                <th>Date Of Birth</th>
+                <th>Department</th>
+                <th> </th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +24,12 @@
                     <td>@employee.Id</td>
                     <td>@employee.Name</td>
                     <td>@employee.Email</td>
+                    <td>@employee.Salary</td>
+                    <td>@employee.DateOfBirth</td>
+                    <td>@employee.Department</td>
+                    <td>
+                        <a href="/Employees/Edit/@employee.Id" class="btn btn-dark">Edit</a>
+                    </td>
                 </tr>
             }
         </tbody>
